@@ -25,7 +25,7 @@ SECRET_KEY = 'q@6vut_6e@4qb)zq5ll-7#mf02%)-7mp6qxgcq%f1&)m3=th*d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'posadas'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,6 +54,27 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'posadas_manager.urls'
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = ('DELETE',
+                      'GET',
+                      'OPTIONS',
+                      'PATCH',
+                      'POST',
+                      'PUT',
+                      )
+
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 
 TEMPLATES = [
     {
